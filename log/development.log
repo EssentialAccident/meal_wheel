@@ -3657,3 +3657,47 @@ Processing by DashboardController#index as HTML
 Completed 200 OK in 43ms (Views: 37.1ms | ActiveRecord: 1.2ms | Allocations: 5468)
 
 
+Started GET "/" for 172.24.0.1 at 2021-06-09 02:08:33 +0000
+Cannot render console from 172.24.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DashboardController#index as HTML
+  [1m[36mMeal Load (9.2ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/controllers/dashboard_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.haml
+  Rendering dashboard/index.html.haml within layouts/application
+  Rendered dashboard/index.html.haml within layouts/application (Duration: 32.3ms | Allocations: 4376)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_nav.html.haml (Duration: 3.1ms | Allocations: 1946)
+  Rendered layout layouts/application.html.haml (Duration: 170.5ms | Allocations: 16091)
+Completed 200 OK in 279ms (Views: 204.4ms | ActiveRecord: 25.9ms | Allocations: 24504)
+
+
+Started GET "/" for 172.24.0.1 at 2021-06-09 02:09:05 +0000
+Cannot render console from 172.24.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DashboardController#index as HTML
+  [1m[36mMeal Load (4.4ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/controllers/dashboard_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.haml
+  Rendering dashboard/index.html.haml within layouts/application
+  Rendered dashboard/index.html.haml within layouts/application (Duration: 54.7ms | Allocations: 4369)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_nav.html.haml (Duration: 3.0ms | Allocations: 1945)
+  Rendered layout layouts/application.html.haml (Duration: 173.3ms | Allocations: 16082)
+Completed 200 OK in 237ms (Views: 190.7ms | ActiveRecord: 10.8ms | Allocations: 24490)
+
+
+Started GET "/" for 172.24.0.1 at 2021-06-09 02:09:08 +0000
+Cannot render console from 172.24.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DashboardController#index as HTML
+  [1m[36mMeal Load (1.0ms)[0m  [1m[34mSELECT "meals".* FROM "meals"[0m
+  ↳ app/controllers/dashboard_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.haml
+  Rendering dashboard/index.html.haml within layouts/application
+  Rendered dashboard/index.html.haml within layouts/application (Duration: 0.2ms | Allocations: 85)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_nav.html.haml (Duration: 0.2ms | Allocations: 104)
+  Rendered layout layouts/application.html.haml (Duration: 43.6ms | Allocations: 3899)
+Completed 200 OK in 51ms (Views: 45.6ms | ActiveRecord: 1.0ms | Allocations: 5529)
+
+
