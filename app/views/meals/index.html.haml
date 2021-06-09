@@ -1,0 +1,24 @@
+.container-md
+  %h1.display-2.mb-4 Meals
+  .row.align-items-center
+    .col-8
+      %ul.list-group.mb-5
+        - @meals.each do |meal|
+          %li.list-group-item.d-flex.justify-content-between.align-items-start
+            = meal.name
+            = link_to "Destroy", meal_path(meal), 
+                method: :delete, 
+                data: { confirm: "Are you sure?" },
+                class: 'btn btn-outline-danger btn-sm'
+  = form_with model: Meal.new do |form|
+    .row.g-3.align-items-center
+      .col-7
+        = form.text_field :name, placeholder: 'Add a new meal', class: 'form-control'
+      .col-2
+        = form.submit 'Submit', class: 'btn btn-primary'
+
+  .row.mt-5
+    .col-auto
+      =link_to 'Home', root_path, class: 'btn btn-primary'
+
+ 
