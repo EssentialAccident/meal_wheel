@@ -11,3 +11,4 @@ gem*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+*.log*
