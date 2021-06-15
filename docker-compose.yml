@@ -23,5 +23,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     networks: 
       - meal_wheel
+    stdin_open: true
+    tty: true
 networks:
   meal_wheel:
