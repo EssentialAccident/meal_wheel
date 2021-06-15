@@ -14,7 +14,7 @@ COPY Gemfile /meal_wheel/Gemfile
 COPY Gemfile.lock /meal_wheel//Gemfile.lock
 RUN bundle install
 RUN yarn install
-COPY . .
+# COPY . .
 
 # Add a script to be executed every time the container starts
 COPY entrypoint.sh /usr/bin/
