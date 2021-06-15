@@ -9,9 +9,9 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
   tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -y yarn
 
-WORKDIR /myapp
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+WORKDIR /meal_wheel
+COPY Gemfile /meal_wheel/Gemfile
+COPY Gemfile.lock /meal_wheel//Gemfile.lock
 RUN bundle install
 RUN yarn install
 COPY . .
