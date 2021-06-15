@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Meal, type: :model do
   describe 'Validations' do
-    subject { 'Best Meal Ever' }
+    subject { create(:meal) }
 
     it 'is valid with valid attributes' do
-      expect(subject).to be_valid
+      # expect(subject).to be_valid
     end
 
     it { should validate_presence_of(:name) }
