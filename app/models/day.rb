@@ -3,4 +3,5 @@ class Day < ApplicationRecord
   belongs_to :week
 
   # Validations
+  validates :meal_id, presence: true
 end

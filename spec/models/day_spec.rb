@@ -9,5 +9,6 @@ RSpec.describe Day, type: :model do
     end
 
     it { should belong_to(:week) }
+    it { should validate_presence_of(:meal_id) }
   end
 end
