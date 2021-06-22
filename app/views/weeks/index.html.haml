@@ -1,0 +1,19 @@
+.container
+  %h1.display-2.mb-5 Weeks
+  .row.justify-content-center 
+    .col-6
+      = link_to 'Create a new week', new_week_path, class: 'btn btn-outline-primary'
+  .row.align-items-center.mt-5.mb-5
+    .col-8
+      %ul.list-group
+        - @weeks.each do |week|
+          %li.list-group-item.d-flex.justify-content-between.align-items-start
+            = week.start_date
+            = link_to "Destroy", week_path(week), 
+                method: :delete, 
+                data: { confirm: "Are you sure?" },
+                class: 'btn btn-outline-danger btn-sm'
+  
+  .row.mt-5
+    .col-auto
+      =link_to 'Home', root_path, class: 'btn btn-primary'

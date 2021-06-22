@@ -3,7 +3,10 @@
   = form_with model: Meal.new do |form|
     .row.g-3.align-items-center
       .col-7
-        = form.text_field :name, placeholder: 'Add a new meal', class: 'form-control'
+        = form.text_field :name, 
+          placeholder: 'Add a new meal',
+          class: 'form-control', 
+          autofocus: "autofocus"
       .col-2
         = form.submit 'Submit', class: 'btn btn-primary'
 
