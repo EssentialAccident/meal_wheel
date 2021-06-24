@@ -36,4 +36,5 @@ ActiveRecord::Schema.define(version: 2021_06_15_193245) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "days", "weeks"
 end
