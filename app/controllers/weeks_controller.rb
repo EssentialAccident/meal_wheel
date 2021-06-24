@@ -2,7 +2,7 @@ class WeeksController < ApplicationController
   before_action :set_week, only: %i[show edit update destroy]
 
   def index
-    @weeks = Week.all
+    @weeks = Week.all.order(:start_date)
   end
 
   def show; end

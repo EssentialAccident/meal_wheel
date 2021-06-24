@@ -16,3 +16,6 @@
                 = day.date.strftime('%a, %b %d')
               %td
                 = day.meal.name
+  .row
+    .col-auto
+      = link_to 'Back', weeks_path, class: 'btn btn-outline-primary'

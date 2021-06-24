@@ -10,12 +10,12 @@
         = form.submit 'Submit', class: 'btn btn-primary'
 
   .row.align-items-center.mt-5.mb-5
-    .col-8
+    .col-auto
       %ul.list-group
         - @weeks.each do |week|
           %li.list-group-item.d-flex.justify-content-between.align-items-start
-            = week.start_date
-            = link_to "Destroy", week_path(week), 
+            = link_to week.start_date.strftime('%A, %b %d, %Y'), week_path(week), class: 'me-5'
+            = link_to "Delete", week_path(week), 
                 method: :delete, 
                 data: { confirm: "Are you sure?" },
                 class: 'btn btn-outline-danger btn-sm'
