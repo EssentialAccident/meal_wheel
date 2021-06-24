@@ -1,8 +1,14 @@
 .container
-  %h1.display-2.mb-5 Weeks
-  .row.justify-content-center 
-    .col-6
-      = link_to 'Create a new week', new_week_path, class: 'btn btn-outline-primary'
+  %h1.mb-5 Weeks
+  = form_with model: Week.new do |form|
+    .row.g-3.align-items-center
+      .col-auto
+        = form.label 'Create a week starting on', class: 'form-label'
+      .col-auto
+        = form.date_field :start_date, class: 'form-control'
+      .col-auto
+        = form.submit 'Submit', class: 'btn btn-primary'
+
   .row.align-items-center.mt-5.mb-5
     .col-8
       %ul.list-group

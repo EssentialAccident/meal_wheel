@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_193245) do
   enable_extension "plpgsql"
 
   create_table "days", force: :cascade do |t|
+    t.date "date"
     t.bigint "week_id"
     t.bigint "meal_id"
     t.datetime "created_at", precision: 6, null: false
@@ -36,5 +37,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_193245) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "days", "meals"
   add_foreign_key "days", "weeks"
 end

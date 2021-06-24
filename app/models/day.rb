@@ -1,7 +1,7 @@
 class Day < ApplicationRecord
   # Relationships
   belongs_to :week
-  has_one :meal
+  belongs_to :meal
 
   # Validations
   validates :meal_id, presence: true

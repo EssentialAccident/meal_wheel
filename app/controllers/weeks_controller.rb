@@ -7,13 +7,10 @@ class WeeksController < ApplicationController
 
   def show; end
 
-  def new
-    @week = Week.new
-  end
-
   def create
     @week = Week.new(week_params)
     if @week.save
+      create_days(@week)
       redirect_to @week
     else
       render :new
@@ -41,7 +38,18 @@ class WeeksController < ApplicationController
     @week = Week.find(params[:id])
   end
 
-  def day_params
+  def get_days; end
+
+  def week_params
     params.require(:week).permit(:start_date)
+  end
+
+  def create_days(week)
+    days = []
+    meals = Meal.all
+    7.times do |n|
+      days.append({ date: week.start_date + n, week_id: week.id, meal_id: meals.sample.id })
+    end
+    Day.create(days)
   end
 end

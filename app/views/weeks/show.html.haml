@@ -1,0 +1,18 @@
+.container
+  %h1.mb-5 
+    Week starting on 
+    = @week.start_date.strftime('%A, %b %d, %Y')
+  .row.align-items-center.mt-5.mb-5
+    .col-auto
+      %table.table
+        %thead
+          %tr
+            %th{scope: 'col'} Date
+            %th{scope: 'col'} Meal
+        %tbody
+          - @week.days.each do |day|
+            %tr
+              %td 
+                = day.date.strftime('%a, %b %d')
+              %td
+                = day.meal.name
