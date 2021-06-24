@@ -3,6 +3,7 @@ class WeeksController < ApplicationController
 
   def index
     @weeks = Week.all.order(:start_date)
+    @previous_monday = previous_monday(Time.now)
   end
 
   def show; end

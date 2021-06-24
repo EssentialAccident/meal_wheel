@@ -5,7 +5,7 @@
       .col-auto
         = form.label 'Create a week starting on', class: 'form-label'
       .col-auto
-        = form.date_field :start_date, class: 'form-control'
+        = form.date_field :start_date, value: @previous_monday.to_date, class: 'form-control'
       .col-auto
         = form.submit 'Submit', class: 'btn btn-primary'
 
