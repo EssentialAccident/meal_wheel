@@ -8,6 +8,10 @@ class WeeksController < ApplicationController
 
   def show; end
 
+  def new
+    @week = Week.new
+  end
+
   def create
     @week = Week.new(week_params)
     if @week.save

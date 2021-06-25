@@ -8,6 +8,8 @@
         = form.date_field :start_date, value: @previous_monday.to_date, class: 'form-control'
       .col-auto
         = form.submit 'Submit', class: 'btn btn-primary'
+      .col-auto
+        = link_to 'Generate Manually', new_week_path, class: 'btn btn-secondary'
 
   .row.align-items-center.mt-5.mb-5
     .col-auto

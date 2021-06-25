@@ -9,7 +9,7 @@ class DaysController < ApplicationController
   def show; end
 
   def new
-    @day = @shark.days.build
+    @day = @week.days.build
   end
 
   def create
