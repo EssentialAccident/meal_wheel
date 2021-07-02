@@ -1,13 +1,19 @@
 .container
   %h1.mb-5 Weeks
   = form_with model: Week.new do |form|
+    -# This is the hidden param for the selection between 
+    -# random or manual. For more info check the entry
+    -# on the create action of the Weeks controller
+    = form.hidden_field :random, value: true
     .row.g-3.align-items-center
       .col-auto
-        = form.label 'Create a week starting on', class: 'form-label'
+        = form.label 'Create a week with random meals starting on', class: 'form-label'
       .col-auto
         = form.date_field :start_date, value: @previous_monday.to_date, class: 'form-control'
       .col-auto
         = form.submit 'Submit', class: 'btn btn-primary'
+      .col-auto 
+        = link_to 'Create a customized week', new_week_path, class: 'btn btn-primary'
 
   .row.align-items-center.mt-5.mb-5
     .col-auto
