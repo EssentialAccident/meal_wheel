@@ -12,13 +12,25 @@ class WeeksController < ApplicationController
     @week = Week.new
   end
 
+  # The create method of the Weeks controller will handle
+  # two different logics.
+  # 1. The Week canbe created randomly. This means that
+  # the days of the Week will be created randomly from the
+  # available meals.
+  # 2. The week canbe created by hand. This means that the
+  # user can select the seven meals of the week him/herself.
+  # To know which option the user has chosen a hidden
+  # param :random has been used. If set to true, the first
+  # option has been chosen
   def create
-    @week = Week.new(week_params)
-    if @week.save
-      create_days(@week)
-      redirect_to @week
-    else
-      render :new
+    if params[:week][:random]
+      @week = Week.new(week_params)
+      if @week.save
+        @week.create_random_days
+        redirect_to @week
+      else
+        render :new
+      end
     end
   end
 
@@ -47,14 +59,5 @@ class WeeksController < ApplicationController
 
   def week_params
     params.require(:week).permit(:start_date)
-  end
-
-  def create_days(week)
-    days = []
-    meals = Meal.all
-    7.times do |n|
-      days.append({ date: week.start_date + n, week_id: week.id, meal_id: meals.sample.id })
-    end
-    Day.create(days)
   end
 end

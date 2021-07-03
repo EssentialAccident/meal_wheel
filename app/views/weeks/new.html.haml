@@ -1,16 +1,3 @@
 .container
-  %h1.mb-5 Create a new week
-= form_with(model: [@week, day], local: true) do |form|
-  - if day.errors.any?
-    #error_explanation 
-      %h2
-        = pluralize(day.errors.count, "error")
-        prohibited this day from being saved: 
-      %ul 
-        - day.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = form.label :meal_id
-    = form.text :meal_id
-  .actions 
-    = form.submit
+  %h1.mb-5 New week
+  = render 'form'
