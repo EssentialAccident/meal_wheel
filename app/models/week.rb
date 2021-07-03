@@ -1,6 +1,7 @@
 class Week < ApplicationRecord
   # Relationships
   has_many :days, dependent: :destroy
+  accepts_nested_attributes_for :days
 
   # Validations
   validates :start_date, presence: true

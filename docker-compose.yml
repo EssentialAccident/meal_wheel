@@ -19,5 +19,6 @@ services:
       - db
     environment: 
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    image: meal_wheel:1.0.0
     stdin_open: true
     tty: true

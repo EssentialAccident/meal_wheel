@@ -1,1 +1,12 @@
-= form_with 
+= form_with model: @week, local: true do |form|
+  = form.hidden_field :random, value: 'false'
+  .row.g-3.align-items-center
+    .col-auto
+      = form.label 'Week starting on'
+    .col-auto 
+      = form.date_field :start_date, value: @previous_monday.to_date, class: 'form-control'
+  = form.fields_for :days do |day_form|
+    .row.g-3.align-items-center
+      .col-auto
+        = day_form.select :meal_id, @meals.map(&:name).zip(@meals.map(&:id))
+  = form.submit 'Submit', class: 'btn btn-primary'
