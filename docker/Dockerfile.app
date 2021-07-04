@@ -1,20 +1,37 @@
-FROM ruby:3.0
+FROM ruby:3.0-buster
 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client curl
+ENV ROOT /meal_wheel
 
-# Adding yarn to repository and installing it
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | \
   apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
   tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -y yarn
 
-WORKDIR /meal_wheel
-COPY Gemfile /meal_wheel/Gemfile
-COPY Gemfile.lock /meal_wheel//Gemfile.lock
+RUN apt-get update -qq && \
+  apt-get install -y \
+  build-essential \
+  nodejs \
+  yarn \
+  libpq-dev \
+  postgresql-client \
+  curl
+
+RUN apt-get clean autoclean && \
+  apt-get autoremove -y && \
+  rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log
+
+WORKDIR $ROOT
+
+ENV RAILS_ENV 'development'
+# ENV RAILS_ENV 'production'
+
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+
 RUN bundle install
-RUN yarn install
-# COPY . .
+# RUN bundle install --jobs 20 retry 5 without development test
+RUN yarn install --check-files
+
 
 # Add a script to be executed every time the container starts
 COPY entrypoint.sh /usr/bin/
