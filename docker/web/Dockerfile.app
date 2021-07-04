@@ -1,6 +1,10 @@
 FROM ruby:3.0-buster
 
-ENV ROOT /meal_wheel
+ARG ROOT
+ARG RAILS_MASTER_KEY
+
+ENV ROOT $ROOT
+ENV RAILS_MASTER_KEY $RAILS_MASTER_KEY
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | \
   apt-key add -

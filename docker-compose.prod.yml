@@ -12,6 +12,9 @@ services:
     build:
       context: .
       dockerfile: docker/web/Dockerfile.app
+      args:
+        ROOT: ${ROOT}
+        RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     environment:
       RAILS_ENV: 'production'
     image: meal_wheel.prod:1.0.0
