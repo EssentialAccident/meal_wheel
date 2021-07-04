@@ -1,0 +1,27 @@
+version '3.3'
+
+volumes:
+  - db-data
+
+services:
+  db:
+    volumes:
+      - db-data:/var/lib/postgresql/data
+  
+  app:
+    context: .
+    dockerfile: docker/web/Dockerfile.app
+    environment:
+      RAILS_ENV='production'
+    image: meal_wheel.prod:1.0.0
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/web/Dockerfile.web
+    depends_on: 
+      - app
+    ports:
+      - 80:80
+    environment: 
+      - ROOT
