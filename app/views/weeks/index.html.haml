@@ -4,17 +4,29 @@
     .col-auto
       = link_to 'New Week', new_week_path, class: 'btn btn-primary btn-lg'
 
-  .row.g-2.align-items-center.mt-5.mb-5
-    - @weeks.each do |week|
+  
+  - @weeks.each do |week|
+    .row.g-3.align-items-center.mt-5
       .col-auto
-        = link_to week.start_date.strftime('%A, %b %d, %Y'), week_path(week), class: 'me-5'
-      .col-auto
-        = link_to 'Edit', edit_week_path(week), class: 'btn btn-outline-primary btn-sm'
-      .col-auto
+        %p.display-6
+          = week.start_date.strftime('%A, %b %d, %Y')
+      .col-auto.ms-5
+        = link_to 'Show', week_path(week), class: 'btn btn-outline-primary'
+        = link_to 'Edit', edit_week_path(week), class: 'btn btn-outline-info'
         = link_to 'Delete', week_path(week), 
             method: :delete, 
             data: { confirm: "Are you sure?" },
-            class: 'btn btn-outline-danger btn-sm'
+            class: 'btn btn-outline-danger'
+      .row
+        .col-auto
+          %table.table
+            - week.days.each do |day|
+              %tr
+                %td= day.date.strftime('%A, %b %d, %Y')
+                %td= day.meal.name
+
+
+    
   
   .row.mt-5
     .col-auto
