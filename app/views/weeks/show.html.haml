@@ -16,6 +16,8 @@
                 = day.date.strftime('%a, %b %d')
               %td
                 = day.meal.name
-  .row
+  .row.g-3.align-items-center
     .col-auto
-      = link_to 'Back', weeks_path, class: 'btn btn-outline-primary'
+      = link_to 'Edit', edit_week_path(@week), class: 'btn btn-info'
+    .col-auto
+      = link_to 'Back', weeks_path, class: 'btn btn-primary'
