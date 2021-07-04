@@ -27,13 +27,14 @@ ENV RAILS_ENV 'production'
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 
-RUN bundle install
-# RUN bundle install --jobs 20 retry 5 without development test
+RUN bundle config set --local wihtout 'development test'
+
+RUN bundle install --without development test 
 RUN yarn install --check-files
 
 COPY . .
 
-RUN rm -rf spec && \
+RUN rm -rf spec 
 
 # Add a script to be executed every time the container starts
 COPY entrypoint.sh /usr/bin/
