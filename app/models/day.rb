@@ -9,6 +9,9 @@ class Day < ApplicationRecord
   # Callbacks
   before_save :set_date
 
+  # Scope
+  default_scope { order(date: :asc) }
+
   def set_date
     self.date = week.start_date + week.days.index(self)
   end
