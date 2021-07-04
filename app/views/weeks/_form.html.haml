@@ -1,5 +1,5 @@
 = form_with model: @week, local: true do |form|
-  .row.g-3.align-items-center
+  .row.g-3.align-items-center.mb-4
     .col-auto
       = form.label 'Week starting on'
     .col-auto 
@@ -7,5 +7,11 @@
   = form.fields_for :days do |day_form|
     .row.g-3.align-items-center
       .col-auto
-        = day_form.select :meal_id, @meals.map(&:name).zip(@meals.map(&:id)), class: 
-  = form.submit 'Submit', class: 'btn btn-primary'
+        = day_form.label 'Select a meal: '
+      .col-auto
+        = day_form.select :meal_id, @meals.map(&:name).zip(@meals.map(&:id)), {}, class: 'form-select' 
+  .row.g-3.align-items-center.mt-4
+    .col-auto
+      = form.submit 'Submit', class: 'btn btn-primary'
+    .col-auto
+      = link_to 'Back to the week pages', weeks_path, class: 'btn btn-danger'

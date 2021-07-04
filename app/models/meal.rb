@@ -4,4 +4,8 @@ class Meal < ApplicationRecord
 
   # Validations
   validates :name, presence: true
+
+  def self.alphabetical_order
+    Meal.all.order(:name)
+  end
 end

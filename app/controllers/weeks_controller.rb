@@ -1,6 +1,6 @@
 class WeeksController < ApplicationController
   before_action :set_week, only: %i[show edit update destroy]
-  before_action :set_previous_monday, only: %i[index new]
+  before_action :set_previous_monday, only: %i[index new edit]
 
   def index
     @weeks = Week.all.order(:start_date)
@@ -10,20 +10,10 @@ class WeeksController < ApplicationController
 
   def new
     @week = Week.new
-    @meals = Meal.all
+    @meals = Meal.alphabetical_order
     7.times { @week.days.build }
   end
 
-  # The create method of the Weeks controller will handle
-  # two different logics.
-  # 1. The Week canbe created randomly. This means that
-  # the days of the Week will be created randomly from the
-  # available meals.
-  # 2. The week canbe created by hand. This means that the
-  # user can select the seven meals of the week him/herself.
-  # To know which option the user has chosen a hidden
-  # param :random has been used. If set to true, the first
-  # option has been chosen
   def create
     @week = Week.new(week_params)
     if @week.save
@@ -33,10 +23,14 @@ class WeeksController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @week = Week.find(params[:id])
+    @meals = Meal.alphabetical_order
+  end
 
   def update
-    if @week.update
+    @week = Week.find(params[:id])
+    if @week.update(week_params)
       redirect_to @week
     else
       render :edit
@@ -59,7 +53,7 @@ class WeeksController < ApplicationController
   end
 
   def week_params
-    params.require(:week).permit(:start_date, days_attributes: [:meal_id])
+    params.require(:week).permit(:start_date, days_attributes: %i[id meal_id date])
   end
 
   def set_previous_monday
