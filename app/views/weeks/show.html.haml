@@ -1,7 +1,9 @@
 .container
-  %h1.mb-5 
-    Week starting on 
-    = @week.start_date.strftime('%A, %b %d, %Y')
+  .row.mt-5
+    .col-auto
+      %h1
+        Week starting on 
+        = @week.start_date.strftime('%A, %b %d, %Y')
   .row.align-items-center.mt-5.mb-5
     .col-auto
       %table.table
@@ -16,7 +18,7 @@
                 = day.date.strftime('%a, %b %d')
               %td
                 = day.meal.name
-  .row.g-3.align-items-center
+  .row.g-3 .align-items-center
     .col-auto
       = link_to 'Edit', edit_week_path(@week), class: 'btn btn-info'
     .col-auto

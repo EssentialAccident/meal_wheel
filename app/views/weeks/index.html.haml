@@ -1,12 +1,12 @@
 .container
-  %h1.mb-5 Weeks
-  .row
+  .row.mt-5.mb-2
     .col-auto
+      %h1 Weeks
+    .col-auto.ms-auto
       = link_to 'New Week', new_week_path, class: 'btn btn-primary btn-lg'
 
-  
   - @weeks.each do |week|
-    .row.g-3.align-items-center.mt-5
+    .row.g-3.align-items-center
       .col-auto
         %p.display-6
           = week.start_date.strftime('%A, %b %d, %Y')
@@ -17,7 +17,7 @@
             method: :delete, 
             data: { confirm: "Are you sure?" },
             class: 'btn btn-outline-danger'
-      .row
+      .row.mb-3
         .col-auto
           %table.table
             - week.days.each do |day|
@@ -25,9 +25,6 @@
                 %td= day.date.strftime('%A, %b %d, %Y')
                 %td= day.meal.name
 
-
-    
-  
   .row.mt-5
     .col-auto
       =link_to 'Home', root_path, class: 'btn btn-primary'
