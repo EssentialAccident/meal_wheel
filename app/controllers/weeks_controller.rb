@@ -25,24 +25,11 @@ class WeeksController < ApplicationController
   # param :random has been used. If set to true, the first
   # option has been chosen
   def create
-    puts "===== #{params[:week][:random]}  ====="
-    if params[:week][:random] == 'true'
-      @week = Week.new(week_params_random)
-      if @week.save
-        @week.create_random_days
-        redirect_to @week
-      else
-        render :new
-      end
+    @week = Week.new(week_params)
+    if @week.save
+      redirect_to @week
     else
-      puts 'I got false'
-      @week = Week.new(week_params)
-      if @week.save
-        @week.days.map(&:get_date)
-        redirect_to @week
-      else
-        render :new
-      end
+      render :new
     end
   end
 
@@ -67,14 +54,12 @@ class WeeksController < ApplicationController
     @week = Week.find(params[:id])
   end
 
-  def get_days; end
+  def get_days
+    @days = days
+  end
 
   def week_params
     params.require(:week).permit(:start_date, days_attributes: [:meal_id])
-  end
-
-  def week_params_random
-    params.require(:week).permit(:start_date)
   end
 
   def set_previous_monday

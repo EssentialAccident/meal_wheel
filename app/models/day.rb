@@ -7,11 +7,9 @@ class Day < ApplicationRecord
   validates :meal_id, presence: true
 
   # Callbacks
-  before_save :get_date
+  before_save :set_date
 
-  def get_date
-    start_date = week.start_date
-    first_day_id = week.days.first.id
-    self.date = start_date + id - first_day_id
+  def set_date
+    self.date = week.start_date + week.days.index(self)
   end
 end

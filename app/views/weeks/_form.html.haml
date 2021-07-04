@@ -1,5 +1,4 @@
 = form_with model: @week, local: true do |form|
-  = form.hidden_field :random, value: 'false'
   .row.g-3.align-items-center
     .col-auto
       = form.label 'Week starting on'
@@ -8,5 +7,5 @@
   = form.fields_for :days do |day_form|
     .row.g-3.align-items-center
       .col-auto
-        = day_form.select :meal_id, @meals.map(&:name).zip(@meals.map(&:id))
+        = day_form.select :meal_id, @meals.map(&:name).zip(@meals.map(&:id)), class: 
   = form.submit 'Submit', class: 'btn btn-primary'
