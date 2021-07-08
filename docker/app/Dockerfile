@@ -14,7 +14,9 @@ RUN apt-get update -qq && \
   yarn \
   libpq-dev \
   postgresql-client \
-  curl
+  curl \
+  nano \
+  vim
 
 RUN apt-get clean autoclean && \
   apt-get autoremove -y && \
