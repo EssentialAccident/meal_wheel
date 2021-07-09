@@ -11,15 +11,18 @@ services:
     build: 
       context: .
       dockerfile: docker/app/Dockerfile
+      args:
+        RALS_ROOT: ${RAILS_ROOT}
+        # RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:${ROOT}
+      - .:${RAILS_ROOT}
     ports:
       - 3000:3000
     depends_on:
       - db
     environment: 
-      - ROOT
+      - RAILS_ROOT
       - POSTGRES_USER
       - POSTGRES_PASSWORD
     image: meal_wheel:1.0.0

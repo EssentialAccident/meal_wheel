@@ -1,6 +1,8 @@
 FROM ruby:3.0-buster
 
-ENV ROOT /meal_wheel
+ARGS RAILS_ROOT
+
+ENV RAILS_ROOT $RAILS_ROOT
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | \
   apt-key add -
@@ -20,7 +22,7 @@ RUN apt-get clean autoclean && \
   apt-get autoremove -y && \
   rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log
 
-WORKDIR $ROOT
+WORKDIR $RAILS_ROOT
 
 ENV RAILS_ENV 'development'
 # ENV RAILS_ENV 'production'
