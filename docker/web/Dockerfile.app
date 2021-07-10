@@ -24,7 +24,7 @@ RUN apt-get clean autoclean && \
   apt-get autoremove -y && \
   rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log
 
-WORKDIR $ROOT
+WORKDIR ${RAILS_ROOT}
 
 ENV RAILS_ENV 'production'
 
