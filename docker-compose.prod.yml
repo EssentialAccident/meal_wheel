@@ -25,10 +25,11 @@ services:
     build:
       context: .
       dockerfile: docker/web/Dockerfile.web
+      args: RAILS_ROOT: ${RAILS_ROOT}
     depends_on: 
       - app
     ports:
       # PiHole is currently using port 80
       - 81:80
     environment: 
-      - ROOT
+      - RAILS_ROOT
