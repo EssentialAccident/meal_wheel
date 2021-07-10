@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: docker/web/Dockerfile.app
       args:
-        RALS_ROOT: ${RAILS_ROOT}
+        RAILS_ROOT: ${RAILS_ROOT}
       
     environment:
       RAILS_ENV: 'production'
