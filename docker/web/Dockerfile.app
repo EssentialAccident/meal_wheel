@@ -1,9 +1,9 @@
 FROM ruby:3.0-buster
 
-ARG ROOT
+ARG RAILS_ROOT
 ARG RAILS_MASTER_KEY
 
-ENV ROOT $ROOT
+ENV RAILS_ROOT $RAILS_ROOT
 ENV RAILS_MASTER_KEY $RAILS_MASTER_KEY
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | \
@@ -24,7 +24,7 @@ RUN apt-get clean autoclean && \
   apt-get autoremove -y && \
   rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log
 
-WORKDIR $ROOT
+WORKDIR ${RAILS_ROOT}
 
 ENV RAILS_ENV 'production'
 
