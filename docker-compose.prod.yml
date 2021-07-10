@@ -24,6 +24,7 @@ services:
     depends_on: 
       - app
     ports:
-      - 80:80
+      # PiHole is currently using port 80
+      - 81:80
     environment: 
       - ROOT
