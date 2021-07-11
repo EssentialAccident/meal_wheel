@@ -7,6 +7,7 @@ services:
   db: 
     volumes:
       - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
   
   app:
     build:
@@ -20,6 +21,7 @@ services:
       RAILS_ROOT: ${RAILS_ROOT}
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     image: meal_wheel.prod:1.0.0
+    restart: unless-stopped
 
   # web:
   #   build:
