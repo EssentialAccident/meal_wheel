@@ -1,6 +1,7 @@
 version: "3.3"
 services:
   db:
+    container_name: postgres
     image: postgres:13
     volumes:
       - ./db-data:/var/lib/postgresql/data
@@ -14,6 +15,7 @@ services:
       args:
         RAILS_ROOT: ${RAILS_ROOT}
         RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+    container_name: meal_wheel
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:${RAILS_ROOT}
