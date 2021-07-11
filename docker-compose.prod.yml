@@ -12,7 +12,7 @@ services:
     build:
       context: .
       dockerfile: docker/web/Dockerfile.app
-      arg:
+      args:
         RAILS_ROOT: ${RAILS_ROOT}
         RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     environment:
