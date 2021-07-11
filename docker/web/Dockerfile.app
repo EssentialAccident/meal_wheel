@@ -34,7 +34,9 @@ COPY Gemfile.lock Gemfile.lock
 RUN bundle config set --local wihtout 'development test'
 
 RUN bundle install --without development test 
-RUN yarn install --check-files
+# Precompiling the assets does the yarn install
+# RUN yarn install --check-files
+RUN rails assets:precompile RAILS_ENV=production
 
 COPY . .
 
@@ -46,7 +48,7 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-RUN RAILS_ENV=production rake assets:precompile
+
 
 # Configure the main process to run when running image
 CMD ["rails", "server", "-b", "0.0.0.0"]
