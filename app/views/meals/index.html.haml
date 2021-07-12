@@ -10,8 +10,9 @@
       %ul.list-group
         - @meals.each do |meal|
           %li.list-group-item.d-flex.justify-content-between.align-items-start
-            = meal.name
-            = link_to 'Edit', edit_meal_path(meal), class: 'btn btn-outline-info'
+            .ms-2.me-auto
+              = meal.name
+            = link_to 'Edit', edit_meal_path(meal), class: 'btn btn-outline-info btn-sm me-2'
             = link_to "Delete", meal_path(meal), 
                 method: :delete, 
                 data: { confirm: "Are you sure?" },
