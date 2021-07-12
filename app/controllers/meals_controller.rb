@@ -1,4 +1,5 @@
 class MealsController < ApplicationController
+  before_action :set_meal, onlly: %i[show edit update destroy]
   def index
     @meal = Meal.new
     @meals = Meal.all.order(:name)
@@ -13,12 +14,9 @@ class MealsController < ApplicationController
     redirect_to meals_path
   end
 
-  def edit
-    @meal = Meal.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @meal = Meal.find(params[:id])
     if @meal.update(meal_params)
       redirect_to meals_path
     else
@@ -27,9 +25,7 @@ class MealsController < ApplicationController
   end
 
   def destroy
-    @meal = Meal.find(params[:id])
     @meal.destroy
-
     redirect_to meals_path
   end
 
@@ -37,5 +33,9 @@ class MealsController < ApplicationController
 
   def meal_params
     params.require(:meal).permit(:name)
+  end
+
+  def set_meal
+    @meal = Meal.find(params[:id])
   end
 end
