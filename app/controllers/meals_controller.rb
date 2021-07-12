@@ -1,15 +1,28 @@
 class MealsController < ApplicationController
   def index
+    @meal = Meal.new
     @meals = Meal.all
   end
 
   def create
     @meal = Meal.new(meal_params)
     if @meal.save
-      redirect_to meals_path
     else
       flash.alert = 'Meal could not bne created'
-      redirect_to meals_path
+    end
+    redirect_to meals_path
+  end
+
+  def edit
+    @meal = Meal.find(params[:id])
+  end
+
+  def update
+    @meal = Meal.find(params[:id])
+    if @meal.update(meal_params)
+      redirect_to @meal
+    else
+      render :edit
     end
   end
 
@@ -21,7 +34,8 @@ class MealsController < ApplicationController
   end
 
   private
-    def meal_params
-      params.require(:meal).permit(:name)
-    end
+
+  def meal_params
+    params.require(:meal).permit(:name)
+  end
 end

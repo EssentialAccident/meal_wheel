@@ -1,14 +1,9 @@
 .container-md
   %h1.display-2.mb-5 Meals
-  = form_with model: Meal.new do |form|
-    .row.g-3.align-items-center
-      .col-7
-        = form.text_field :name, 
-          placeholder: 'Add a new meal',
-          class: 'form-control', 
-          autofocus: "autofocus"
-      .col-2
-        = form.submit 'Submit', class: 'btn btn-primary'
+  .row
+    .col-auto 
+      %h4 Add a new meal
+  = render 'form', locals: { model: @meal }
 
   .row.align-items-center.mt-5.mb-5
     .col-8
@@ -16,6 +11,7 @@
         - @meals.each do |meal|
           %li.list-group-item.d-flex.justify-content-between.align-items-start
             = meal.name
+            = link_to 'Edit', edit_meal_path(meal), class: 'btn btn-outline-info'
             = link_to "Delete", meal_path(meal), 
                 method: :delete, 
                 data: { confirm: "Are you sure?" },

@@ -1,7 +1,7 @@
 = form_with model: @week, local: true do |form|
   .row.g-3.align-items-center.mb-4
     .col-auto
-      = form.label 'Week starting on'
+      = form.label 'Week starting on', class: 'form-label'
     .col-auto 
       = form.date_field :start_date, value: @previous_monday.to_date, class: 'form-control'
   = form.fields_for :days do |day_form|

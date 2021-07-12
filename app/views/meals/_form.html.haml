@@ -1,0 +1,11 @@
+= form_with model: @meal, local: true do |form|
+  .row.g-3.align-items-center.mb-4 
+    .col-auto
+      = form.label 'Meal name'
+    .col-auto
+      = form.text_field :name, class: 'form-control', autofocus: 'autofocus'
+  .row.g-3.align-items-center.mb-4
+    .col-auto
+      = form.submit 'Submit', class: 'btn btn-primary'
+    .col-auto
+      = link_to 'Back to the meals page', meals_path, class: 'btn btn-danger' 
