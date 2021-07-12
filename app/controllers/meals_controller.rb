@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
   def index
     @meal = Meal.new
-    @meals = Meal.all
+    @meals = Meal.all.order(:name)
   end
 
   def create
@@ -20,7 +20,7 @@ class MealsController < ApplicationController
   def update
     @meal = Meal.find(params[:id])
     if @meal.update(meal_params)
-      redirect_to @meal
+      redirect_to meals_path
     else
       render :edit
     end
