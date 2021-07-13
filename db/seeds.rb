@@ -31,3 +31,18 @@ meals = Meal.create([
                       { name: 'Wedge salad nigth' },
                       { name: 'Ground beef sandwhich' }
                     ])
+
+puts 'Seeding weeks'
+weeks = []
+10.times do |n|
+  date = Time.now.to_date + (n * 7)
+  weeks.append(date)
+end
+weeks.each do |date|
+  days = []
+  7.times do
+    days.append(Day.new({ meal_id: Meal.all.sample.id }))
+  end
+  Week.create({ start_date: date,
+                days: days })
+end
