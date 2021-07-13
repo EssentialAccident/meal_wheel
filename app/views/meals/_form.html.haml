@@ -4,6 +4,12 @@
       = form.label 'Meal name'
     .col-auto
       = form.text_field :name, class: 'form-control', autofocus: 'autofocus'
+  = form.fields_for :recipes do |recipe_form|
+    .row.g-3.align-items-center.mb-4
+      .col-auto
+        = recipe_form.label 'Describe the step', class: 'form-label'
+        = recipe_form.text_area :step, size: '70x7', class: 'form-control'
+
   .row.g-3.align-items-center.mb-4
     .col-auto
       = form.submit 'Submit', class: 'btn btn-primary'

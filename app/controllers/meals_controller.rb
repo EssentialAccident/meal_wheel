@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: %i[show edit update destroy]
+  before_action :get_recipes, only: %i[show edit update destroy]
 
   def index
     @meal = Meal.new
@@ -10,7 +11,7 @@ class MealsController < ApplicationController
 
   def new
     @meal = Meal.new
-    @meal.days.build
+    @meal.recipes.build
   end
 
   def create
@@ -22,7 +23,9 @@ class MealsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @meal.recipes.build
+  end
 
   def update
     if @meal.update(meal_params)
@@ -43,11 +46,11 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
   end
 
-  def meal_params
-    params.require(:meal).permit(:name, steps_attributes: %i[id step meal_id])
+  def get_recipes
+    @recipes = @meal.recipes.all
   end
 
-  def get_steps
-    @steps = steps
+  def meal_params
+    params.require(:meal).permit(:name, steps_attributes: %i[id step meal_id])
   end
 end

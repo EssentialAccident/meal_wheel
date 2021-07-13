@@ -7,7 +7,7 @@
   = form.fields_for :days do |day_form|
     .row.g-3.align-items-center
       .col-auto
-        = day_form.label 'Select a meal: '
+        = day_form.label 'Select a meal:', class: 'form-label'
       .col-auto
         = day_form.select :meal_id, @meals.map(&:name).zip(@meals.map(&:id)), {}, class: 'form-select' 
   .row.g-3.align-items-center.mt-4

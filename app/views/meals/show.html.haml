@@ -1,0 +1,12 @@
+.container
+  .row.mt-5
+    .col-auto
+      %h1= @meal.name
+  .row.align-items-center
+    - @recipes.each do |recipe|
+      .col-auto
+        .card{style: "width: 18rem;"}
+          .card-body
+            %h5.card-title
+              = Step recipe.id
+

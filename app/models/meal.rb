@@ -2,6 +2,7 @@ class Meal < ApplicationRecord
   # Relationships
   has_many :days
   has_many :recipes, dependent: :destroy
+  accepts_nested_attributes_for :recipes
 
   # Validations
   validates :name, presence: true
