@@ -1,12 +1,17 @@
 .container
-  .row.mt-5
+  .row.my-5
     .col-auto
       %h1= @meal.name
-  .row.align-items-center
+  .row.g-3.d-flex.align-items-stretch
+    -step_counter = 1
     - @recipes.each do |recipe|
-      .col-auto
-        .card{style: "width: 18rem;"}
+      .col-sm-6.col-lg-3
+        .card.h-100.d-inline-block
           .card-body
-            %h5.card-title
-              = Step recipe.id
+            %h5.card-title 
+              Step
+              = step_counter
+            %p.card-text
+              = recipe.step
+      -step_counter +=1
 

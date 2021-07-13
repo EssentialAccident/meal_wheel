@@ -6,31 +6,39 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'ffaker'
+
 puts 'Seeding meals'
-meals = Meal.create([
-                      { name: 'Pasta Bologna' },
-                      { name: 'Tacos' },
-                      { name: 'Pork Chops + Rice' },
-                      { name: 'Lasagna' },
-                      { name: 'Ground beef sandwhich' },
-                      { name: 'Pork sloppy Joe' },
-                      { name: 'Burgers' },
-                      { name: 'Loaded potato wedges' },
-                      { name: 'Pork sausage and rosted tomato risotto' },
-                      { name: 'Tuscan Herbed Chicken linguini' },
-                      { name: 'Cowboy Skillet' },
-                      { name: 'Flatbreads' },
-                      { name: 'Cuatro quesos' },
-                      { name: 'Gracy smothered pork chops' },
-                      { name: 'Lemon rosemary chicken' },
-                      { name: 'Garlic Rosemary Chicken' },
-                      { name: 'Crispy bruscheta chiken' },
-                      { name: 'Bacon and rosted tomato linguini' },
-                      { name: 'Dijon butter steak' },
-                      { name: 'Chicken Bacon Avocado sandwhich' },
-                      { name: 'Wedge salad nigth' },
-                      { name: 'Ground beef sandwhich' }
-                    ])
+meals = ['Pasta Bologna',
+         'Tacos',
+         'Pork Chops + Rice',
+         'Lasagna',
+         'Ground beef sandwhich',
+         'Pork sloppy Joe',
+         'Burgers',
+         'Loaded potato wedges',
+         'Pork sausage and rosted tomato risotto',
+         'Tuscan Herbed Chicken linguini',
+         'Cowboy Skillet',
+         'Flatbreads',
+         'Cuatro quesos',
+         'Gracy smothered pork chops',
+         'Lemon rosemary chicken',
+         'Garlic Rosemary Chicken',
+         'Crispy bruscheta chiken',
+         'Bacon and rosted tomato linguini',
+         'Dijon butter steak',
+         'Chicken Bacon Avocado sandwhich',
+         'Wedge salad nigth',
+         'Ground beef sandwhich']
+
+meals.each do |meal|
+  recipes = []
+  rand(1..10).times do
+    recipes.append(Recipe.new({ step: FFaker::Lorem.paragraph }))
+  end
+  Meal.create({ name: meal, recipes: recipes })
+end
 
 puts 'Seeding weeks'
 weeks = []

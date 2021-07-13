@@ -1,6 +1,6 @@
-FROM ruby:3.0-buster
+FROM ruby:3.0.1-buster
 
-ARGS RAILS_ROOT
+ARG RAILS_ROOT
 
 ENV RAILS_ROOT $RAILS_ROOT
 
@@ -17,8 +17,7 @@ RUN apt-get update -qq && \
   libpq-dev \
   postgresql-client \
   curl \
-  nano \
-  vim
+  nano 
 
 RUN apt-get clean autoclean && \
   apt-get autoremove -y && \
