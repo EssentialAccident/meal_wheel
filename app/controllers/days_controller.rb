@@ -43,7 +43,7 @@ class DaysController < ApplicationController
   end
 
   def set_day
-    @day = @week.posts.find(params[:id])
+    @day = @week.day.find(params[:id])
   end
 
   def day_params

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'weeks/index'
-  resources :meals
+  resources :meals do
+    resources :recipes
+  end
   resources :weeks do
     resources :days
   end

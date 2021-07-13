@@ -1,6 +1,7 @@
 class Meal < ApplicationRecord
   # Relationships
   has_many :days
+  has_many :recipes, dependent: :destroy
 
   # Validations
   validates :name, presence: true

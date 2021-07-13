@@ -15,7 +15,6 @@ class WeeksController < ApplicationController
   end
 
   def create
-    @week = Week.new(week_params)
     if @week.save
       redirect_to @week
     else
@@ -24,12 +23,10 @@ class WeeksController < ApplicationController
   end
 
   def edit
-    @week = Week.find(params[:id])
     @meals = Meal.alphabetical_order
   end
 
   def update
-    @week = Week.find(params[:id])
     if @week.update(week_params)
       redirect_to @week
     else
