@@ -4,6 +4,4 @@ class Recipe < ApplicationRecord
 
   # Validations
   validates :step, presence: true
-
-  
 end

@@ -29,7 +29,7 @@ class MealsController < ApplicationController
 
   def update
     if @meal.update(meal_params)
-      redirect_to meals_path
+      redirect_to @meal
     else
       render :edit
     end
@@ -51,6 +51,6 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(:name, steps_attributes: %i[id step meal_id])
+    params.require(:meal).permit(:name, recipes_attributes: %i[id step meal_id])
   end
 end

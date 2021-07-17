@@ -1,7 +1,9 @@
 .container
-  .row.my-5
+  .row.my-5.align.items.center
     .col-auto
       %h1= @meal.name
+    .col-auto.ms-auto
+      = link_to 'Edit', edit_meal_path(@meal), class: 'btn btn-info'
   .row.g-3.d-flex.align-items-stretch
     -step_counter = 1
     - @recipes.each do |recipe|
